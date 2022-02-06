@@ -10,6 +10,11 @@ namespace M2HW3
     {
         public static Candy[] SearchDessertPorousCandy(this Child child)
         {
+            if (child == null || child.Gift == null || child.Gift.Candies == null)
+            {
+                return null;
+            }
+
             Candy[] tempCandies = new Candy[0];
             for (int i = 0; i < child.Gift.Candies.Length; i++)
             {

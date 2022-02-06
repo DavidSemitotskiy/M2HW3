@@ -11,9 +11,14 @@ namespace M2HW3
         private Candy[] _candies;
         public BoxGift(Candy[] candies)
         {
+            if (candies == null)
+            {
+                _candies = Array.Empty<Candy>();
+                return;
+            }
+
             _candies = new Candy[candies.Length];
             Array.Copy(candies, _candies, candies.Length);
-            TotalWeight = GetTotalWeight();
         }
 
         public Candy[] Candies
@@ -21,17 +26,19 @@ namespace M2HW3
             get => _candies;
         }
 
-        public decimal TotalWeight { get; private set; }
+        public decimal TotalWeight
+        {
+            get => _candies.Sum(i => i.GetWeight());
+        }
+
         public void AddCandy(Candy candy)
         {
             _candies = _candies.Add(candy);
-            TotalWeight = GetTotalWeight();
         }
 
         public void DeleteCandy(string name)
         {
             _candies = _candies.Delete(name);
-            TotalWeight = GetTotalWeight();
         }
 
         public void GetDescriptionGift()
@@ -41,11 +48,6 @@ namespace M2HW3
             {
                 Console.WriteLine(candy.GetDescription());
             }
-        }
-
-        public decimal GetTotalWeight()
-        {
-            return _candies.Sum(i => i.GetWeight());
         }
     }
 }

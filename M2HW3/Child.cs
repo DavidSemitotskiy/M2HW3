@@ -23,13 +23,18 @@ namespace M2HW3
 
         public void EatCandy()
         {
+            if (Gift.Candies.Length == 0)
+            {
+                return;
+            }
+
             Random rand = new Random();
             Gift.DeleteCandy(Gift.Candies[rand.Next(Gift.Candies.Length)].Name);
         }
 
         public void PickUpGift()
         {
-            Console.WriteLine($"По ощущениям вес подарка - {Gift.GetTotalWeight()}");
+            Console.WriteLine($"По ощущениям вес подарка - {Gift.TotalWeight}");
         }
     }
 }

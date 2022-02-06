@@ -9,7 +9,7 @@ namespace M2HW3
     public interface IGift
     {
         Candy[] Candies { get; }
-        decimal GetTotalWeight();
+        decimal TotalWeight { get; }
         void AddCandy(Candy candy);
         void DeleteCandy(string name);
         void GetDescriptionGift();
