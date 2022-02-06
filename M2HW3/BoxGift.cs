@@ -28,7 +28,16 @@ namespace M2HW3
 
         public decimal TotalWeight
         {
-            get => _candies.Sum(i => i.GetWeight());
+            get
+            {
+                decimal sum = 0;
+                foreach (var candy in _candies)
+                {
+                    sum += candy.GetWeight();
+                }
+
+                return sum;
+            }
         }
 
         public void AddCandy(Candy candy)
